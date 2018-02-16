@@ -1,0 +1,28 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model ArtistForeignViewModel
+
+@{
+    ViewBag.Title = "Добавление зарубежного исполнителя";
+}
+
+
+
+<form action="~/admin/ForeignArtist/Add" method="post" name="frmAddForeignArtist" id="frmAddForeignArtist">
+    <fieldset form="frmAddForeignArtist">
+        <legend>Добавление зарубежного исполнителя</legend>
+       
+        Имя исполнителя <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name)
+        <br>
+        Чпу <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName">
+        @Html.ValidationMessageFor(model => model.clearUrlName)
+        <br>
+        Популяреый исполнитель <br/> @Html.CheckBoxFor(m => Model.isPopular)
+        @Html.ValidationMessageFor(model => model.isPopular)
+        <br/>
+        Биография исполнителя <br> <textarea rows="15" cols="50" name="Biography">@Model.biography</textarea><br>
+        <br />
+        <br />
+        <p><input type="submit" value="Добавить"></p>
+    </fieldset>
+</form>

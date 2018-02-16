@@ -1,0 +1,52 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model List<ArtistForeignViewModel>
+
+@{
+    ViewBag.Title = "Зарубежные исполнители";
+}
+
+<h2>Зарубежные исполнители</h2>
+
+<a href="~/admin/ForeignArtist/Add">Добавить исполнителя</a> <span>|</span> 
+<a href="~/admin/ForeignSong/Add">Добавить зарубежную песню</a>
+<br/>
+<br />
+@if (Model.Any())
+{ 
+<table width="50%" border="1px" class="table table-striped" >
+    <tr>
+        <th width="30px">
+            Id
+        </th>
+        <th>
+            Имя
+        </th>
+        <th>
+            Чпу
+        </th>
+        <th width="150px" ></th>
+    </tr>
+    @foreach (var artist in Model)
+    {
+        <tr>
+            <td>
+                @artist.id
+            </td>
+            <td align="left">
+                @artist.name
+            </td>
+            <td align="left">
+                @artist.clearUrlName
+            </td>
+            <td>
+                <a href="~/admin/ForeignArtist/Edit/@artist.id">Править</a>
+                <a onclick="return  confirm('Удалить исполнителя?')" href="~/admin/ForeignArtist/Delete/@artist.id">Удалить</a>
+            </td>
+        </tr>
+    }
+ </table>
+}
+else
+{
+    <p>Список зарубежных исполнителей пуст</p>
+}

@@ -1,0 +1,56 @@
+﻿@using Gitarist.Areas.Admin.Models.Song
+@model SearchResult
+
+@{
+    ViewBag.Title = "Найденные русские песни";
+}
+
+<h2>Найденные русские песни</h2>
+
+<form id="fmSearch" action="~/Admin/RussianSong/Search/">
+    Поиск песен <input id="Criteria" name="Criteria" type="text" value="@ViewBag.SearchCriteria" /><input value="Искать" type="submit" />
+</form>
+
+<a href="~/admin/RussianSong/Add">Добавить песню</a>
+<br />
+<br />
+
+
+    <table width="70%" border="1px" class="table table-striped">
+        <tr>
+            <th width="30px">
+                Id
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Исполнитель
+            </th>
+            <th>
+                Тема
+            </th>
+            <th width="150px"></th>
+        </tr>
+        @foreach (var song in Model.ruSongs)
+        {
+            <tr>
+                <td>
+                    @song.id
+                </td>
+                <td align="left">
+                    @song.name
+                </td>
+                <td align="left">
+                    @(song.ArtistRusian == null ? "" : song.ArtistRusian.name)
+                </td>
+                <td align="left">
+                    @(song.Theme == null ? "" : song.Theme.name)
+                </td>
+                <td>
+                    <a href="~/admin/RussianSong/Edit/@song.id">Править</a>
+                    <a onclick="return  confirm('Удалить песню?')" href="~/admin/RussianSong/Delete/@song.id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </table>

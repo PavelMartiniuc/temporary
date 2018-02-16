@@ -1,0 +1,47 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model SongForeignViewModel
+
+@{
+    ViewBag.Title = "Добавление зарубежной песни";
+}
+
+
+
+<form action="~/admin/ForeignSong/Add" method="post" name="frmAddForeignSong" id="frmAddForeignSong">
+    <fieldset form="frmAddForeignSong">
+        <legend>Добавление зарубежной песни</legend>
+        Зарубежный исполнитель <br> @Html.DropDownListFor(m => Model.artistId, new SelectList(SongForeignViewModel.Artists, "id", "name"))
+        <br />
+        Тема песни <br> @Html.DropDownListFor(m => Model.themeId, new SelectList(SongForeignViewModel.Themes, "id", "name"))
+        <br/>
+        Название зарубежной песни <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name)
+        <br>
+        Чпу <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName">
+        @Html.ValidationMessageFor(model => model.clearUrlName)
+        <br>
+        Новинка <br /> @Html.CheckBoxFor(m => Model.isNew)
+        <br>
+        Популярная песня <br /> @Html.CheckBoxFor(m => Model.isPopular)<br />
+        Аккорды <br /><br />
+        <input type="button" id="btCopySelection" value="Копировать фрагмент" />
+        <input type="button" id="btPasteChords" value="Вставить аккоры" />
+        <input type="button" id="btCancelFormat" value="Отменить преобразование" />
+        <br /><br />
+        <div id="chords">
+            <div id="originalTextChords">
+                <textarea rows="25" cols="50" id="Chords" name="Chords">@Model.chords</textarea><br>
+                @Html.ValidationMessageFor(model => model.chords)
+            </div>
+            <div id="textChords">
+
+                <textarea rows="15" cols="50" id="copiedChords" disabled="disabled"></textarea>
+                <p>Скопированые аккорды</p>
+            </div>
+        </div>
+        <div class="saveDiv">
+            <br />
+            <p><input type="submit" value="Сохранить"></p>
+        </div>
+    </fieldset>
+</form>

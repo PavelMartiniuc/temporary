@@ -1,0 +1,51 @@
+﻿@using Gitarist.Models.ViewModels
+@using Gitarist.Models.DataBase
+@model PopularArtistsCount<ArtistForeign>
+@{
+    ViewBag.Title = "Популярные зарубежные исполнители";
+}
+
+<h2>Популярные зарубежные исполнители</h2>
+
+<div class="russianArtistsListByLetter">
+
+    @if (Model.Artists.Count() > 0)
+    {
+        <table class="table" cellspacing="0" cellpadding="0">
+            <tr>
+                <th width="90%">
+                    Исполнитель
+                </th>
+                <th width="10%">
+                    Подборов
+                </th>
+            </tr>
+            @foreach (var artist in Model.Artists)
+            {
+                <tr>
+                    <td>
+                     
+                        @if (string.IsNullOrEmpty(artist.Artist.clearUrlName))
+                        {
+                            <a href="~/ForeignSongs/ArtistSongs/@artist.Artist.id">@artist.Artist.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ArtistSongs/@artist.Artist.clearUrlName">@artist.Artist.name</a>
+                        }
+
+                    </td>
+                    <td align="center">
+                        @artist.Count
+                    </td>
+
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>Нет популярныъх зарубежных исполнителей</p>
+    }
+
+</div>

@@ -1,0 +1,62 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model SongRusianViewModel
+
+@{
+    ViewBag.Title = "Правка русской песни";
+}
+
+@Scripts.Render("~/bundles/admin/SongChordsFormat")
+<link rel="stylesheet" type="text/css" href="/Scripts/Plugins/jquery.transposer.css">
+
+<form action="~/admin/RussianSong/Edit" method="post" name="frmEditRussianSong" id="frmEditRussianSong">
+    <fieldset form="frmEditRussianSong">
+        <legend>Правка русской песни</legend>
+        @Html.HiddenFor(m=>Model.id)
+        <a id="redirectToChordsView" href="~/RussianSongs/ById/@Model.id" >Просмотр песни</a>
+        <br />
+        <br />
+        <span>Русский исполнитель</span> <br> @Html.DropDownListFor(m => Model.artistId, new SelectList(Model.Artists, "id", "name", Model.artistId))
+        <br />
+        <span>Тема песни </span> <br> @Html.DropDownListFor(m => Model.themeId, new SelectList(Model.Themes, "id", "name", Model.themeId))
+        <br/>
+        <span> Название русской песни </span> <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name)
+        <br>
+        <span> Чпу </span> <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName">
+        @Html.ValidationMessageFor(model => model.clearUrlName)
+        <br>
+        <span> Новинка </span> <br /> @Html.CheckBoxFor(m => Model.isNew)<br>
+        <span> Популярная песня</span> <br /> @Html.CheckBoxFor(m => Model.isPopular)<br />
+        <span>Аккорды</span> <br/><br/>
+        <input type="button" id="btCopySelection" value="Копировать фрагмент" />
+        <input type="button" id="btPasteChords" value="Вставить аккоры" />
+        <input type="button" id="btCancelFormat" value="Отменить преобразования" />
+        <input type="button" id="btParseChords" value="Распознать аккорды" />
+        <span>Тональность</span>
+        @Html.DropDownList("chordsKey",Model.ChordKeys)
+        <br/><br />
+        <div id="chords" >
+            <div id="originalTextChords">
+                <textarea rows="25" cols="50" id="Chords" name="Chords"  >@Model.chords</textarea><br>
+                @Html.ValidationMessageFor(model => model.chords)
+            </div>
+            <span id="status" ></span>
+            <div id="textChords">
+                <textarea rows="15" cols="50" id="copiedChords" disabled="disabled"></textarea>
+                <p><span>Скопированые аккорды</span></p>
+            </div>
+            <div id="parsedContainer" >
+                <pre id="parsedChords" class="viewSongChords" data-key="">
+                </pre>
+            </div>
+   
+        </div>
+        <div class="saveDiv" >
+            <br />
+            <p><input name="SaveAndClose" type="submit" value="Сохранить и закрыть"> <input name="Save" type="submit" value="Сохранить"></p>
+        </div>
+    </fieldset>
+</form>
+
+<script type="text/javascript" src="~/Scripts/Plugins/jquery.transposer.js"></script>
+<script type="text/javascript" src="~/Scripts/My/Admin/TransposeChords.js"></script>

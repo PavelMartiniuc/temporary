@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gitaristModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="gitaristModelStoreContainer">
+    <EntitySet Name="ArtistForeigns" EntityType="gitaristModel.Store.ArtistForeigns" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArtistRusians" EntityType="gitaristModel.Store.ArtistRusians" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Chords" EntityType="gitaristModel.Store.Chords" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SongForeigns" EntityType="gitaristModel.Store.SongForeigns" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SongRusians" EntityType="gitaristModel.Store.SongRusians" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Themes" EntityType="gitaristModel.Store.Themes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_SongForeign_ArtistForeign" Association="gitaristModel.Store.FK_SongForeign_ArtistForeign">
+      <End Role="ArtistForeign" EntitySet="ArtistForeigns" />
+      <End Role="SongForeign" EntitySet="SongForeigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongRusian_ArtistRusian" Association="gitaristModel.Store.FK_SongRusian_ArtistRusian">
+      <End Role="ArtistRusian" EntitySet="ArtistRusians" />
+      <End Role="SongRusian" EntitySet="SongRusians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongForeign_Theme" Association="gitaristModel.Store.FK_SongForeign_Theme">
+      <End Role="Theme" EntitySet="Themes" />
+      <End Role="SongForeign" EntitySet="SongForeigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SongRusian_Theme" Association="gitaristModel.Store.FK_SongRusian_Theme">
+      <End Role="Theme" EntitySet="Themes" />
+      <End Role="SongRusian" EntitySet="SongRusians" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ArtistForeigns">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="biography" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="isPopular" Type="bit" Nullable="false" />
+    <Property Name="clearUrlName" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ArtistRusians">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="biography" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="isPopular" Type="bit" Nullable="false" />
+    <Property Name="clearUrlName" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Chords">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="description" Type="varbinary" Nullable="false" MaxLength="50" />
+    <Property Name="imageUrl" Type="varchar" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="SongForeigns">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="artistId" Type="int" Nullable="true" />
+    <Property Name="themeId" Type="int" Nullable="true" />
+    <Property Name="isNew" Type="bit" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="chords" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="isPopular" Type="bit" Nullable="false" />
+    <Property Name="datecreate" Type="datetime" Nullable="false" />
+    <Property Name="clearUrlName" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="SongRusians">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="artistId" Type="int" Nullable="true" />
+    <Property Name="themeId" Type="int" Nullable="true" />
+    <Property Name="isNew" Type="bit" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="chords" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="isPopular" Type="bit" Nullable="false" />
+    <Property Name="datecreate" Type="datetime" Nullable="false" />
+    <Property Name="clearUrlName" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Themes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="deleted" Type="bit" Nullable="false" />
+    <Property Name="clearUrlName" Type="nvarchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_SongForeign_ArtistForeign">
+    <End Role="ArtistForeign" Type="gitaristModel.Store.ArtistForeigns" Multiplicity="0..1" />
+    <End Role="SongForeign" Type="gitaristModel.Store.SongForeigns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArtistForeign">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SongForeign">
+        <PropertyRef Name="artistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongRusian_ArtistRusian">
+    <End Role="ArtistRusian" Type="gitaristModel.Store.ArtistRusians" Multiplicity="0..1" />
+    <End Role="SongRusian" Type="gitaristModel.Store.SongRusians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArtistRusian">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SongRusian">
+        <PropertyRef Name="artistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongForeign_Theme">
+    <End Role="Theme" Type="gitaristModel.Store.Themes" Multiplicity="0..1" />
+    <End Role="SongForeign" Type="gitaristModel.Store.SongForeigns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theme">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SongForeign">
+        <PropertyRef Name="themeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongRusian_Theme">
+    <End Role="Theme" Type="gitaristModel.Store.Themes" Multiplicity="0..1" />
+    <End Role="SongRusian" Type="gitaristModel.Store.SongRusians" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theme">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SongRusian">
+        <PropertyRef Name="themeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gitaristModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="gitaristEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ArtistForeigns" EntityType="gitaristModel.ArtistForeign" />
+          <EntitySet Name="ArtistRusians" EntityType="gitaristModel.ArtistRusian" />
+          <EntitySet Name="Chords" EntityType="gitaristModel.Chord" />
+          <EntitySet Name="SongForeigns" EntityType="gitaristModel.SongForeign" />
+          <EntitySet Name="SongRusians" EntityType="gitaristModel.SongRusian" />
+          <EntitySet Name="Themes" EntityType="gitaristModel.Theme" />
+          <AssociationSet Name="FK_SongForeign_ArtistForeign" Association="gitaristModel.FK_SongForeign_ArtistForeign">
+            <End Role="ArtistForeign" EntitySet="ArtistForeigns" />
+            <End Role="SongForeign" EntitySet="SongForeigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongRusian_ArtistRusian" Association="gitaristModel.FK_SongRusian_ArtistRusian">
+            <End Role="ArtistRusian" EntitySet="ArtistRusians" />
+            <End Role="SongRusian" EntitySet="SongRusians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongForeign_Theme" Association="gitaristModel.FK_SongForeign_Theme">
+            <End Role="Theme" EntitySet="Themes" />
+            <End Role="SongForeign" EntitySet="SongForeigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongRusian_Theme" Association="gitaristModel.FK_SongRusian_Theme">
+            <End Role="Theme" EntitySet="Themes" />
+            <End Role="SongRusian" EntitySet="SongRusians" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ArtistForeign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="biography" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="isPopular" Type="Boolean" Nullable="false" />
+          <Property Name="clearUrlName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SongForeigns" Relationship="gitaristModel.FK_SongForeign_ArtistForeign" FromRole="ArtistForeign" ToRole="SongForeign" />
+        </EntityType>
+        <EntityType Name="ArtistRusian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="biography" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="isPopular" Type="Boolean" Nullable="false" />
+          <Property Name="clearUrlName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SongRusians" Relationship="gitaristModel.FK_SongRusian_ArtistRusian" FromRole="ArtistRusian" ToRole="SongRusian" />
+        </EntityType>
+        <EntityType Name="Chord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="Binary" Nullable="false" MaxLength="50" FixedLength="false" />
+          <Property Name="imageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SongForeign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="artistId" Type="Int32" />
+          <Property Name="themeId" Type="Int32" />
+          <Property Name="isNew" Type="Boolean" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="chords" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="isPopular" Type="Boolean" Nullable="false" />
+          <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="clearUrlName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ArtistForeign" Relationship="gitaristModel.FK_SongForeign_ArtistForeign" FromRole="SongForeign" ToRole="ArtistForeign" />
+          <NavigationProperty Name="Theme" Relationship="gitaristModel.FK_SongForeign_Theme" FromRole="SongForeign" ToRole="Theme" />
+        </EntityType>
+        <EntityType Name="SongRusian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="artistId" Type="Int32" />
+          <Property Name="themeId" Type="Int32" />
+          <Property Name="isNew" Type="Boolean" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="chords" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="isPopular" Type="Boolean" Nullable="false" />
+          <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="clearUrlName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ArtistRusian" Relationship="gitaristModel.FK_SongRusian_ArtistRusian" FromRole="SongRusian" ToRole="ArtistRusian" />
+          <NavigationProperty Name="Theme" Relationship="gitaristModel.FK_SongRusian_Theme" FromRole="SongRusian" ToRole="Theme" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="clearUrlName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SongForeigns" Relationship="gitaristModel.FK_SongForeign_Theme" FromRole="Theme" ToRole="SongForeign" />
+          <NavigationProperty Name="SongRusians" Relationship="gitaristModel.FK_SongRusian_Theme" FromRole="Theme" ToRole="SongRusian" />
+        </EntityType>
+        <Association Name="FK_SongForeign_ArtistForeign">
+          <End Type="gitaristModel.ArtistForeign" Role="ArtistForeign" Multiplicity="0..1" />
+          <End Type="gitaristModel.SongForeign" Role="SongForeign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArtistForeign">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongForeign">
+              <PropertyRef Name="artistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SongRusian_ArtistRusian">
+          <End Type="gitaristModel.ArtistRusian" Role="ArtistRusian" Multiplicity="0..1" />
+          <End Type="gitaristModel.SongRusian" Role="SongRusian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArtistRusian">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongRusian">
+              <PropertyRef Name="artistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SongForeign_Theme">
+          <End Type="gitaristModel.Theme" Role="Theme" Multiplicity="0..1" />
+          <End Type="gitaristModel.SongForeign" Role="SongForeign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongForeign">
+              <PropertyRef Name="themeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SongRusian_Theme">
+          <End Type="gitaristModel.Theme" Role="Theme" Multiplicity="0..1" />
+          <End Type="gitaristModel.SongRusian" Role="SongRusian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongRusian">
+              <PropertyRef Name="themeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gitaristModelStoreContainer" CdmEntityContainer="gitaristEntities">
+    <EntitySetMapping Name="ArtistForeigns">
+      <EntityTypeMapping TypeName="IsTypeOf(gitaristModel.ArtistForeign)">
+        <MappingFragment StoreEntitySet="ArtistForeigns">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="biography" ColumnName="biography" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="isPopular" ColumnName="isPopular" />
+          <ScalarProperty Name="clearUrlName" ColumnName="clearUrlName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArtistRusians">
+      <EntityTypeMapping TypeName="IsTypeOf(gitaristModel.ArtistRusian)">
+        <MappingFragment StoreEntitySet="ArtistRusians">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="biography" ColumnName="biography" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="isPopular" ColumnName="isPopular" />
+          <ScalarProperty Name="clearUrlName" ColumnName="clearUrlName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chords">
+      <EntityTypeMapping TypeName="IsTypeOf(gitaristModel.Chord)">
+        <MappingFragment StoreEntitySet="Chords">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SongForeigns">
+      <EntityTypeMapping TypeName="IsTypeOf(gitaristModel.SongForeign)">
+        <MappingFragment StoreEntitySet="SongForeigns">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="themeId" ColumnName="themeId" />
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="chords" ColumnName="chords" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="isPopular" ColumnName="isPopular" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="clearUrlName" ColumnName="clearUrlName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SongRusians">
+      <EntityTypeMapping TypeName="IsTypeOf(gitaristModel.SongRusian)">
+        <MappingFragment StoreEntitySet="SongRusians">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="themeId" ColumnName="themeId" />
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="chords" ColumnName="chords" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="isPopular" ColumnName="isPopular" />
+          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
+          <ScalarProperty Name="clearUrlName" ColumnName="clearUrlName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Themes">
+      <EntityTypeMapping TypeName="IsTypeOf(gitaristModel.Theme)">
+        <MappingFragment StoreEntitySet="Themes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+          <ScalarProperty Name="clearUrlName" ColumnName="clearUrlName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

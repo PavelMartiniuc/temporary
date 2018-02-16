@@ -1,0 +1,98 @@
+﻿@using Gitarist.Models.ViewModels
+@using Gitarist.Areas.Admin.Models;
+
+@model ArtistsForeignByLetter
+@{
+    ViewBag.Title = "исполнители исполнители на букву " + @Model.Letter;
+ }
+    
+
+<h2>Зарубежные исполнители на букву @Model.Letter</h2>
+
+<div class="foreignArtistsListByLetter">
+
+    @if (Model.Artists.Count() > 0)
+    {
+        <table class="foreignArtistsListByLetterList" cellspacing="0" cellpadding="0">
+            <tr>
+                <th width="90%">
+                    Исполнитель
+                </th>
+                <th width="10%">
+                    Подборов
+                </th>
+            </tr>
+            @foreach (var artist in Model.Artists)
+            {
+                <tr>
+                    <td>
+                        @if (string.IsNullOrEmpty(artist.artist.clearUrlName))
+                        {
+                            <a href="~/ForeignSongs/ArtistSongs/@artist.artist.id">@artist.artist.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ArtistSongs/@artist.artist.clearUrlName">@artist.artist.name</a>
+                        }
+                    </td>
+                    <td align="center" >
+                        @artist.SongCount
+                    </td>
+
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+    <p>Нет исполнителей на буку @Model.Letter</p>
+    }
+
+</div>
+
+<div class="russianArtistsListByLetter">
+
+    <h2>Зарубежные песни без исполнителя на букву @Model.Letter</h2>
+
+    @if (Model.ArtistLessSongs.Count > 0)
+    {
+
+        <table class="russianArtistsListByLetterList" cellspacing="0" cellpadding="0">
+            <tr>
+                <th width="80%">
+                    Песня
+                </th>
+                <th width="20%">
+                    Тематика
+                </th>
+            </tr>
+            @foreach (var song in Model.ArtistLessSongs)
+            {
+                <tr>
+                    <td>
+                        @if (string.IsNullOrEmpty(song.clearUrlName))
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@song.id">@song.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@song.clearUrlName">@song.name</a>
+                        }
+                    </td>
+                    <td align="center">
+                        @if (song.Theme != null)
+                        {
+                            @song.Theme.name
+                        }
+                    </td>
+
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>Нет песен без исполнителя на букву @Model.Letter</p>
+    }
+
+</div>

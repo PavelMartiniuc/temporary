@@ -1,0 +1,573 @@
+﻿select, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #606060;
+    height: 26px;
+    outline: medium none !important;
+    border-radius:4px;
+    border:none;
+}
+
+html{
+    
+   
+}
+
+body {
+    font-size: 1.5em;
+    font-family: Arial , "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: white;
+    margin:0px;
+    padding:0px 20px 0px 20px;
+    background:url(Images/Site/background.jpg);
+}
+
+/*
+*
+{
+   color:white;
+}
+    */
+
+table, span {
+    color: white;
+}
+
+textarea
+{
+    color:black;
+}
+
+th
+{
+    color:white;
+}
+
+
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #4d4642;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n) {
+    background-color: #625953;
+}
+
+
+
+input[type="submit"]
+{
+    background-color:#E9A249;
+    color:white;
+    border:none;
+    border-radius:5px;
+    padding:5px 10px 5px 10px;
+}
+
+input[type="button"] {
+    color:black;
+}
+header, footer, nav, section {
+    display: block;
+}
+
+option
+{
+    color:black;
+}
+
+h1,h2,h3,h4,h5
+{
+    color:white;
+}
+
+h5
+{
+    
+    font-size:15px;
+}
+
+ul, ol
+{
+    list-style:none;
+}
+
+a
+{
+    text-decoration:none;
+    color:#b7a095;
+}
+a:hover, a:visited, a:active
+{
+    text-decoration:none;
+    color:#b7a095;
+}
+
+header
+{
+   /* background-color:IndianRed;*/
+    height:65px;
+    color: white;
+    border-bottom:1px solid #46423F;
+}
+
+
+header a
+{
+    display:block;
+   padding-left:20px;
+    width:250px;
+    height:60px;
+}
+
+header span
+{
+    height:60px;
+    line-height:60px;
+    font-size:22px;
+    font-weight:bold;
+    text-align:center;
+    width:75%;
+
+}
+
+header .logo
+{
+    float:left;
+    width:78%;
+ 
+}
+
+header .search
+{
+    float:right;
+    width:22%;
+    height:60px;
+}
+
+header span.gitarist
+{
+    color:white;
+
+}
+
+header span.ru
+{
+    color:#E9A249;
+}
+
+header span.desc
+{
+    font-size:14px;
+    color:#7D7571;
+}
+
+header form
+{
+    float:right;
+    height:60px;
+    padding-top:20px;
+   
+}
+
+header form input
+{
+    color:black;
+    width:320px;
+    height:20px;
+    background-color:#FFFFFF;
+}
+
+form .searchButton
+{
+   background: url("images/site/search_btn.gif") no-repeat scroll 0 0 #5e5e5e !important;
+    font-size: 0;
+    height: 11px;
+    line-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 25px;
+    text-indent: 9999px;
+    top: 29px;
+    width: 11px;
+    border:none;
+    padding:0px;
+}
+
+form .searchButton:hover {
+    background-color : #e9a249 !important;
+}
+
+
+.nav > li > a:hover, .nav .open > a:hover, .dropdown-menu > li > a:hover 
+{
+    background-color:#E9A249;
+    color:white;
+}
+
+.nav > li > a, nav .open > a, .dropdown-menu > li > a
+{
+    color:#94857e;
+    text-transform:uppercase;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.dropdown-menu
+{
+    background-color:#E9A249;
+}
+
+.content
+{
+    margin:5px;
+}
+
+footer
+  {
+      height:40px;
+      width:100%;
+      display:block;
+      text-align:center;
+      line-height:20px;
+      clear:both;
+      color:white;
+      border-top:1px solid #46423F;
+
+
+      
+  }
+
+footer span
+{
+    line-height:40px;
+}
+
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+header h1
+{
+    text-align:center;
+}
+
+.chordsSelector
+{
+    width:100%;
+    text-align:center;
+    height:95px;
+    border-bottom:1px solid #46423F;
+}
+
+.ruChordsList, .engChordsList
+{
+    list-style:none;
+}
+
+.ruChordsList li , .engChordsList li 
+{
+    display:inline;
+    margin:5px;
+    font-size:15px;
+    font-weight:bold;
+    
+}
+
+.ruChordsList li a, .engChordsList li a
+{
+    color: #fda940;
+}
+
+.russianArtistsListByLetterList, .foreignArtistsListByLetterList
+{
+    width:70%;
+}
+
+.hide
+{
+    display:none;
+}
+
+
+.chordsArticle
+{
+   -moz-column-width: 150px;  
+    -webkit-column-width: 150px;   
+    column-width: 150px;
+
+    -moz-column-rule: 1px dotted #ccc;  
+    -webkit-column-rule: 1px dotted #ccc;  
+    column-rule: 1px dotted #ccc;  
+
+    font-size:medium;
+    font-family:'Times New Roman', Verdana, Arial;
+    clear:both;
+
+    margin-top:41px;
+}
+
+
+.OneColumn
+{
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    
+}
+
+.TwoColumn
+{
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+} 
+
+.ThreeColumn
+{
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+} 
+
+.FourColumn
+{
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+} 
+
+#originalTextChords
+{
+    float:left;
+
+}
+#textChords
+{
+    float:left;
+    margin-left:20px;
+}
+#chords
+{
+   width:100%;
+   clear:both;
+}
+
+.saveDiv
+{
+    clear:both;
+}
+
+.authFailureText
+{
+    color:red;
+}
+
+/* Bootstrap correction */
+pre
+{
+    overflow:inherit;
+    font-size:12px;
+    line-height:15px;
+    border-radius: 0px;
+    border:none;
+
+}
+/* Bootstrap correction */
+
+/* StartPage */
+
+.lastSongs, .popularSongs, .popularArtists
+{
+    width:33%;
+    float:left;
+ 
+}
+
+.chord
+{
+    font-weight:bold;
+    color:darkred;
+    cursor:pointer;
+}
+
+#chordPreview {
+   /* display: none; */
+    position: absolute;
+    z-index: 110;
+    left: -400px;
+    top: 100px;
+    width: 300px;
+    height: 100px;
+    background-position-x:0px;
+    background-position-y:0px;
+
+}
+
+#chordPreview img
+{
+    width:40%;
+    
+}
+
+.SongChodrs
+{
+    list-style:none;
+}
+.SongChodrs li
+{
+    display:block;
+    float:left;
+    width:100px;
+}
+
+.SongChodrs li span
+{
+    font-size:14px;
+    color: darkred;
+    font-weight:bold;
+    display:block;
+    text-align:center;
+    width:80px;
+    padding-top:5px;
+    background-color:#FFFFFF;
+}
+
+.SongChodrs img
+{
+    width:80px;
+
+}
+
+.SearchResultContainer
+{
+    width:100%;
+    
+}
+
+.SearchResultContainer table
+{
+    float:left;
+}
+
+.SearchResultContainer table:first-child
+{
+    border-right:1px solid #ddd;
+}
+.SearchResultContainer p
+{
+    text-align:center;
+    font-size:15px;
+}
+
+
+.w100
+{
+    width:100%;
+}
+
+
+.w50
+{
+    width:50%;
+}
+
+#fmSearch span
+{
+    color:white;
+    font-size:14px;
+}
+
+/* StartPage */
+
+#imgGuitar1
+{
+    left: 100px;
+    position: absolute;
+    top: 114px;
+    width: 109px;
+}
+
+#imgGuitar2 
+{
+    position: absolute;
+    right: 121px;
+    top: 93px;
+    width: 90px;
+}
+
+#parsedContainer {
+    float:left;
+    margin-left: 20px;
+}
+
+pre.viewSongChords
+{
+    overflow:inherit;
+    font-size:13px;
+    font-family:Arial;
+    line-height:20px;
+    background-color: transparent;
+  /*
+      border-radius: 5px;
+    border:1px solid gray;
+   */
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    padding:10px;
+}
+
+

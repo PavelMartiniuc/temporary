@@ -1,0 +1,45 @@
+﻿@using Gitarist.Models.ViewModels
+@model SongsByThemes
+@{
+    ViewBag.Title = "Зарубежные песни по тематике";
+}
+
+<h2>Зарубежные песни по тематике</h2>
+
+@if (Model.ThemeSongCount.Count == 0)
+{
+    <p class="listEmprty"> Нет песен по тематикам </p>
+}
+else
+{
+    <table >
+        <tr>
+            <th width="90%">
+                Тема
+            </th>
+            <th width="10%">
+                Подборов
+            </th>
+        </tr>
+
+        @foreach (var themeCount in Model.ThemeSongCount)
+        {
+            <tr>
+                <td>
+                    @if (string.IsNullOrEmpty(themeCount.Theme.clearUrlName))
+                    {
+                        <a href="~/ForeignSongs/ThemeSongs/@themeCount.Theme.id">@themeCount.Theme.name</a>
+                    }
+                    else
+                    {
+                        <a href="~/ForeignSongs/ThemeSongs/@themeCount.Theme.clearUrlName">@themeCount.Theme.name</a>
+                    }
+                </td>
+                <td align="center">
+                    @themeCount.Count
+                </td>
+            </tr>
+        }
+
+    </table>
+}

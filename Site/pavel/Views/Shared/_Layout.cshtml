@@ -1,0 +1,114 @@
+﻿@using Gitarist.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Styles.Render("~/Content/css")-->
+    @Scripts.Render("~/bundles/jquery")
+    <!-- Scripts.Render("~/plugins/bootstrup")-->
+    @Scripts.Render("~/plugins/jquery-cookie")
+    @Scripts.Render("~/bundles/removeFooter")
+    <!-- Scripts.Render("~/bundles/modernizr") -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/coolMenu.css" />
+    <script src="~/Scripts/My/Site/Startup.js" ></script>
+</head>
+<body>
+    <img src="~/Content/images/site/guitar1.png" id="imgGuitar1" style="display:none" />
+    <img src="~/Content/images/site/guitar2.png" id="imgGuitar2" style="display:none" />
+    @{
+        var routeData = ViewContext.Controller.ControllerContext.RouteData;
+        string curentAction = routeData.Values["controller"].ToString() + "/" + routeData.Values["action"].ToString();
+    }
+    <div class="wrapper">
+        <div class="menu-bg">
+            <div class="wrap">
+                <div class="menu">
+                    <ul id="coolMenu">
+                        <li @Html.GetActiveClass(curentAction, "Start/Index")><a href="~/">Главная</a></li>
+                        <li @Html.GetActiveClass(curentAction, "Songs/New")>
+                            <a href="#">
+                                Новые песни
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianSongs/New">Русские</a> </li>
+                                <li> <a href="~/ForeignSongs/New">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+
+                        <li @Html.GetActiveClass(curentAction, "Songs/Popular")>
+                            <a href="#">
+                                Популярные песни
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianSongs/Popular">Русские</a> </li>
+                                <li> <a href="~/ForeignSongs/Popular">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+                        <li @Html.GetActiveClass(curentAction, "Artist/Popular")>
+                            <a href="#">
+                                Популярные исполнители
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianArtist/Popular">Русские</a> </li>
+                                <li> <a href="~/ForeignArtist/Popular">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+                        <li @Html.GetActiveClass(curentAction, "Songs/SongsByThemes")>
+                            <a href="#">
+                                Песни по тематике
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianSongs/SongsByThemes">Русские</a> </li>
+                                <li> <a href="~/ForeignSongs/SongsByThemes">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+                        <li><a href="~/admin">Авторизация</a></li>
+                     </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="header-bg">
+            <div class="wrap">
+                <div class="header">
+                    <div class="logo">
+                        <a href="~/">   <img src="~/Content/images/site/logoGuitar1.png" alt="" title="logo"><span class="gitarist">Возьми правильный аккорд</span></a>
+                    </div>
+                    <div class="foot-search">
+                        <form id="fmSearch" action="~/Song/Search/">
+                            <input id="Criteria" name="Criteria" type="text" value="@ViewBag.SearchCriteria" placeholder="Поиск по названию, исполнителю и тексту" />
+                            <input type="submit" value="Поиск">
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content-bg">
+            <div class="wrap">
+                <div class="main">
+                    <div class="content">
+                        @Html.Partial("_ChordsByLetterSelector")
+
+                        @RenderBody()
+
+                        @RenderSection("scripts", required: false)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bg">
+            <div class="wrap">
+                <div class="copy">
+                    <p>© 2015 All rights Reserved | Design by Pavel Martin</a></p>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

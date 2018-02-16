@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D2B2EB8-6D1B-49DA-8B2E-739136883139}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gitarist</RootNamespace>
+    <AssemblyName>Gitarist</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Amdaris, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Amdaris\Amdaris.dll</HintPath>
+    </Reference>
+    <Reference Include="Amdaris.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Amdaris\Amdaris.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Amdaris.Domain.Identity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Amdaris\Amdaris.Domain.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>..\..\..\Install\NHibernate.Profiler-v3.0-Build-3091\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.3.6\Assemblies\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity, Version=6.3.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.3.6\Assemblies\v4.0\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\AutoMapperProfiles\ArtistForeignProfile.cs" />
+    <Compile Include="Areas\Admin\AutoMapperProfiles\ArtistRussianProfile.cs" />
+    <Compile Include="Areas\Admin\AutoMapperProfiles\SongForeignProfile.cs" />
+    <Compile Include="Areas\Admin\AutoMapperProfiles\SongRussianProfile.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorizeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ForeignArtistController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RussianArtistController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ForeignSongController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RussianSongController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThemeController.cs" />
+    <Compile Include="Areas\Admin\Models\Authorize\UserAccount.cs" />
+    <Compile Include="Areas\Admin\Models\SongForeign\SongForeignFilteredViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\SongForeign\SongForeignClearUrlHelper.cs" />
+    <Compile Include="Areas\Admin\Models\SongRusian\SongRusianClearUrlHelper.cs" />
+    <Compile Include="Areas\Admin\Models\SongRusian\SongRusianFilteredViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Song\SearchResult.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\ArtistForeignClearUrlUnique.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\ArtistRussianClearUrlUnique.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\SongForeignClearUrlUnique.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\SongForeignUniqueName.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\SongRusianClearUrlUnique.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\SongRusianUniqueName.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\ThemeClearUrlUnique.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\ThemeUniqueName.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\ArtistForeignUniqueName.cs" />
+    <Compile Include="Areas\Admin\ValidationAttributes\ArtistRussianUniqueName.cs" />
+    <Compile Include="AutoMapperProfiles\ForeignArtistProfile.cs" />
+    <Compile Include="AutoMapperProfiles\RussianArtistProfile.cs" />
+    <Compile Include="AutoMapperProfiles\ForeignSongProfile.cs" />
+    <Compile Include="AutoMapperProfiles\RussianSongProfile.cs" />
+    <Compile Include="AutoMapperProfiles\ThemesProfile.cs" />
+    <Compile Include="Controllers\ForeignArtistController.cs" />
+    <Compile Include="Controllers\ForeignSongController.cs" />
+    <Compile Include="Controllers\RussianArtistController.cs" />
+    <Compile Include="Controllers\RussianSongsController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
+    <Compile Include="Controllers\StartController.cs" />
+    <Compile Include="gitarist.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ChordsHelper.cs" />
+    <Compile Include="Helpers\MenuHelper.cs" />
+    <Compile Include="Areas\Admin\AutoMapperProfiles\ThemeProfile.cs" />
+    <Compile Include="Ioc\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\DataBase\ArtistForeign.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\ArtistRusian.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\Backup.cs" />
+    <Compile Include="Models\DataBase\Chord.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\Db.cs" />
+    <Compile Include="Models\DataBase\DbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\DbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\DbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\SongForeign.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\SongRusian.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataBase\Theme.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ArtistForeign\ArtistForeignViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ArtistRusian\ArtistRusianViewModel.cs" />
+    <Compile Include="Models\Lookup\Lookup.cs" />
+    <Compile Include="Models\Lookup\LookupItem.cs" />
+    <Compile Include="Models\ViewModels\ArtistRusian\ArtistRussianByLetter.cs" />
+    <Compile Include="Models\ViewModels\ArtistForeign\ArtistForeignCount.cs" />
+    <Compile Include="Models\ViewModels\ArtistRusian\ArtistRussianCount.cs" />
+    <Compile Include="Models\ViewModels\ArtistForeign\ArtistForeignByLetter.cs" />
+    <Compile Include="Areas\Admin\Models\SongForeign\SongForeignViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\SongRusian\SongRusianViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Theme\ThemeViewModel.cs" />
+    <Compile Include="Models\ViewModels\Artist\PopularArtistCount.cs" />
+    <Compile Include="Models\ViewModels\Base\ArtistViewModel.cs" />
+    <Compile Include="Models\ViewModels\Base\SongViewModel.cs" />
+    <Compile Include="Models\ViewModels\Base\ThemeViewModel.cs" />
+    <Compile Include="Models\ViewModels\SongForeign\SongForeignByArtist.cs" />
+    <Compile Include="Models\ViewModels\SongRusian\SongRusianByArtist.cs" />
+    <Compile Include="Models\ViewModels\StartPage.cs" />
+    <Compile Include="Models\ViewModels\Theme\SongsByTheme.cs" />
+    <Compile Include="Models\ViewModels\Theme\SongsByThemes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\coolMenu.css" />
+    <Content Include="Content\Images\Chords\A\A#.jpg" />
+    <Content Include="Content\Images\Chords\A\a#7.jpg" />
+    <Content Include="Content\Images\Chords\A\A+.jpg" />
+    <Content Include="Content\Images\Chords\A\A.jpg" />
+    <Content Include="Content\Images\Chords\A\A6.jpg" />
+    <Content Include="Content\Images\Chords\A\A7.jpg" />
+    <Content Include="Content\Images\Chords\A\A7slash6.jpg" />
+    <Content Include="Content\Images\Chords\A\A7sus4.jpg" />
+    <Content Include="Content\Images\Chords\A\A9.jpg" />
+    <Content Include="Content\Images\Chords\A\Adim7.jpg" />
+    <Content Include="Content\Images\Chords\A\Am.jpg" />
+    <Content Include="Content\Images\Chords\A\Am6.jpg" />
+    <Content Include="Content\Images\Chords\A\Am7.jpg" />
+    <Content Include="Content\Images\Chords\A\Am9.jpg" />
+    <Content Include="Content\Images\Chords\A\Amaj7.jpg" />
+    <Content Include="Content\Images\Chords\A\Asus4.jpg" />
+    <Content Include="Content\Images\Chords\B\B+.jpg" />
+    <Content Include="Content\Images\Chords\B\B.jpg" />
+    <Content Include="Content\Images\Chords\B\B6.jpg" />
+    <Content Include="Content\Images\Chords\B\B7.jpg" />
+    <Content Include="Content\Images\Chords\B\B7slash6.jpg" />
+    <Content Include="Content\Images\Chords\B\B7sus4.jpg" />
+    <Content Include="Content\Images\Chords\B\B9.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb+.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb6.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb7slash6.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb7sus4.jpg" />
+    <Content Include="Content\Images\Chords\B\Bb9.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbdim.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbdim7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbm.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbm6.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbm7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbm9.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbmaj7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bbsus4.jpg" />
+    <Content Include="Content\Images\Chords\B\Bdim.jpg" />
+    <Content Include="Content\Images\Chords\B\Bdim7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bm.jpg" />
+    <Content Include="Content\Images\Chords\B\Bm6.jpg" />
+    <Content Include="Content\Images\Chords\B\Bm7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bm9.jpg" />
+    <Content Include="Content\Images\Chords\B\Bmaj7.jpg" />
+    <Content Include="Content\Images\Chords\B\Bsus4.jpg" />
+    <Content Include="Content\Images\Chords\C\C#+.jpg" />
+    <Content Include="Content\Images\Chords\C\C#.jpg" />
+    <Content Include="Content\Images\Chords\C\C#6.jpg" />
+    <Content Include="Content\Images\Chords\C\C#7.jpg" />
+    <Content Include="Content\Images\Chords\C\C#7slash6.jpg" />
+    <Content Include="Content\Images\Chords\C\C#7sus4.jpg" />
+    <Content Include="Content\Images\Chords\C\C#9.jpg" />
+    <Content Include="Content\Images\Chords\C\C#dim7.jpg" />
+    <Content Include="Content\Images\Chords\C\C#m.jpg" />
+    <Content Include="Content\Images\Chords\C\C#m6.jpg" />
+    <Content Include="Content\Images\Chords\C\C#m7.jpg" />
+    <Content Include="Content\Images\Chords\C\C#m9.jpg" />
+    <Content Include="Content\Images\Chords\C\C#maj7.jpg" />
+    <Content Include="Content\Images\Chords\C\C#sus4.jpg" />
+    <Content Include="Content\Images\Chords\C\C+.jpg" />
+    <Content Include="Content\Images\Chords\C\C.jpg" />
+    <Content Include="Content\Images\Chords\C\C6.jpg" />
+    <Content Include="Content\Images\Chords\C\C7.jpg" />
+    <Content Include="Content\Images\Chords\C\C7slash6.jpg" />
+    <Content Include="Content\Images\Chords\C\C7sus4.jpg" />
+    <Content Include="Content\Images\Chords\C\C9.jpg" />
+    <Content Include="Content\Images\Chords\C\Cdim7.jpg" />
+    <Content Include="Content\Images\Chords\C\Cm.jpg" />
+    <Content Include="Content\Images\Chords\C\Cm6.jpg" />
+    <Content Include="Content\Images\Chords\C\Cm7.jpg" />
+    <Content Include="Content\Images\Chords\C\Cm9.jpg" />
+    <Content Include="Content\Images\Chords\C\Cmaj7.jpg" />
+    <Content Include="Content\Images\Chords\C\Csus4.jpg" />
+    <Content Include="Content\Images\Chords\D\D#+.jpg" />
+    <Content Include="Content\Images\Chords\D\D#.jpg" />
+    <Content Include="Content\Images\Chords\D\D#6.jpg" />
+    <Content Include="Content\Images\Chords\D\D#7.jpg" />
+    <Content Include="Content\Images\Chords\D\D#7slash6.jpg" />
+    <Content Include="Content\Images\Chords\D\D#7sus4.jpg" />
+    <Content Include="Content\Images\Chords\D\D#9.jpg" />
+    <Content Include="Content\Images\Chords\D\D#dim.jpg" />
+    <Content Include="Content\Images\Chords\D\D#dim7.jpg" />
+    <Content Include="Content\Images\Chords\D\D#m.jpg" />
+    <Content Include="Content\Images\Chords\D\D#m6.jpg" />
+    <Content Include="Content\Images\Chords\D\D#m7.jpg" />
+    <Content Include="Content\Images\Chords\D\D#m9.jpg" />
+    <Content Include="Content\Images\Chords\D\D#maj7.jpg" />
+    <Content Include="Content\Images\Chords\D\D#sus4.jpg" />
+    <Content Include="Content\Images\Chords\D\D+.jpg" />
+    <Content Include="Content\Images\Chords\D\D.jpg" />
+    <Content Include="Content\Images\Chords\D\D6.jpg" />
+    <Content Include="Content\Images\Chords\D\D7.jpg" />
+    <Content Include="Content\Images\Chords\D\D7slash6.jpg" />
+    <Content Include="Content\Images\Chords\D\D7sus4.jpg" />
+    <Content Include="Content\Images\Chords\D\D9.jpg" />
+    <Content Include="Content\Images\Chords\D\Ddim.jpg" />
+    <Content Include="Content\Images\Chords\D\Ddim7.jpg" />
+    <Content Include="Content\Images\Chords\D\Dm.jpg" />
+    <Content Include="Content\Images\Chords\D\Dm6.jpg" />
+    <Content Include="Content\Images\Chords\D\Dm7.jpg" />
+    <Content Include="Content\Images\Chords\D\Dm9.jpg" />
+    <Content Include="Content\Images\Chords\D\Dmaj7.jpg" />
+    <Content Include="Content\Images\Chords\D\Dsus4.jpg" />
+    <Content Include="Content\Images\Chords\E\E+.jpg" />
+    <Content Include="Content\Images\Chords\E\E.jpg" />
+    <Content Include="Content\Images\Chords\E\E6.jpg" />
+    <Content Include="Content\Images\Chords\E\E7.jpg" />
+    <Content Include="Content\Images\Chords\E\E7slash6.jpg" />
+    <Content Include="Content\Images\Chords\E\E7sus4.jpg" />
+    <Content Include="Content\Images\Chords\E\E9.jpg" />
+    <Content Include="Content\Images\Chords\E\Edim.jpg" />
+    <Content Include="Content\Images\Chords\E\Edim7.jpg" />
+    <Content Include="Content\Images\Chords\E\Em.jpg" />
+    <Content Include="Content\Images\Chords\E\Em6.jpg" />
+    <Content Include="Content\Images\Chords\E\Em7.jpg" />
+    <Content Include="Content\Images\Chords\E\Em9.jpg" />
+    <Content Include="Content\Images\Chords\E\Emaj7.jpg" />
+    <Content Include="Content\Images\Chords\E\Esus4.jpg" />
+    <Content Include="Content\Images\Chords\F\D#+.jpg" />
+    <Content Include="Content\Images\Chords\F\F#.jpg" />
+    <Content Include="Content\Images\Chords\F\F#6.jpg" />
+    <Content Include="Content\Images\Chords\F\F#dim.jpg" />
+    <Content Include="Content\Images\Chords\F\F#m.jpg" />
+    <Content Include="Content\Images\Chords\F\F#m6.jpg" />
+    <Content Include="Content\Images\Chords\F\F#maj7.jpg" />
+    <Content Include="Content\Images\Chords\F\F#sus4.jpg" />
+    <Content Include="Content\Images\Chords\F\F+.jpg" />
+    <Content Include="Content\Images\Chords\F\F.jpg" />
+    <Content Include="Content\Images\Chords\F\F6.jpg" />
+    <Content Include="Content\Images\Chords\F\F7.jpg" />
+    <Content Include="Content\Images\Chords\F\Fdim.jpg" />
+    <Content Include="Content\Images\Chords\F\Fm.jpg" />
+    <Content Include="Content\Images\Chords\F\Fm6.jpg" />
+    <Content Include="Content\Images\Chords\F\Fm7.jpg" />
+    <Content Include="Content\Images\Chords\F\Fmaj7.jpg" />
+    <Content Include="Content\Images\Chords\F\Fsus4.jpg" />
+    <Content Include="Content\Images\Chords\G\G#+.jpg" />
+    <Content Include="Content\Images\Chords\G\G#.jpg" />
+    <Content Include="Content\Images\Chords\G\G#6.jpg" />
+    <Content Include="Content\Images\Chords\G\G#7.jpg" />
+    <Content Include="Content\Images\Chords\G\G#7slash6.jpg" />
+    <Content Include="Content\Images\Chords\G\G#7sus4.jpg" />
+    <Content Include="Content\Images\Chords\G\G#9.jpg" />
+    <Content Include="Content\Images\Chords\G\G#dim.jpg" />
+    <Content Include="Content\Images\Chords\G\G#dim7.jpg" />
+    <Content Include="Content\Images\Chords\G\G#m.jpg" />
+    <Content Include="Content\Images\Chords\G\G#m6.jpg" />
+    <Content Include="Content\Images\Chords\G\G#m7.jpg" />
+    <Content Include="Content\Images\Chords\G\G#m9.jpg" />
+    <Content Include="Content\Images\Chords\G\G#maj7.jpg" />
+    <Content Include="Content\Images\Chords\G\G#sus4.jpg" />
+    <Content Include="Content\Images\Chords\G\G+.jpg" />
+    <Content Include="Content\Images\Chords\G\G.jpg" />
+    <Content Include="Content\Images\Chords\G\G6.jpg" />
+    <Content Include="Content\Images\Chords\G\G7.jpg" />
+    <Content Include="Content\Images\Chords\G\G7slash6.jpg" />
+    <Content Include="Content\Images\Chords\G\G7sus4.jpg" />
+    <Content Include="Content\Images\Chords\G\G9.jpg" />
+    <Content Include="Content\Images\Chords\G\Gdim.jpg" />
+    <Content Include="Content\Images\Chords\G\Gdim7.jpg" />
+    <Content Include="Content\Images\Chords\G\Gm.jpg" />
+    <Content Include="Content\Images\Chords\G\Gm6.jpg" />
+    <Content Include="Content\Images\Chords\G\Gm7.jpg" />
+    <Content Include="Content\Images\Chords\G\Gm9.jpg" />
+    <Content Include="Content\Images\Chords\G\Gmaj7.jpg" />
+    <Content Include="Content\Images\Chords\G\Gsus4.jpg" />
+    <Content Include="Content\Images\Chords\H\H+.jpg" />
+    <Content Include="Content\Images\Chords\H\H.jpg" />
+    <Content Include="Content\Images\Chords\H\H6.jpg" />
+    <Content Include="Content\Images\Chords\H\H7.jpg" />
+    <Content Include="Content\Images\Chords\H\H7slash6.jpg" />
+    <Content Include="Content\Images\Chords\H\H7sus4.jpg" />
+    <Content Include="Content\Images\Chords\H\H9.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb+.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb6.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb7slash6.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb7sus4.jpg" />
+    <Content Include="Content\Images\Chords\H\Hb9.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbdim.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbdim7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbm.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbm6.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbm7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbm9.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbmaj7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hbsus4.jpg" />
+    <Content Include="Content\Images\Chords\H\Hdim.jpg" />
+    <Content Include="Content\Images\Chords\H\Hdim7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hm.jpg" />
+    <Content Include="Content\Images\Chords\H\Hm6.jpg" />
+    <Content Include="Content\Images\Chords\H\Hm7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hm9.jpg" />
+    <Content Include="Content\Images\Chords\H\Hmaj7.jpg" />
+    <Content Include="Content\Images\Chords\H\Hsus4.jpg" />
+    <Content Include="Content\Style.css" />
+    <Content Include="Content\themes\images\site\background.jpg" />
+    <Content Include="Content\themes\images\site\search_btn.gif" />
+    <Content Include="Models\DataBase\DbModel.edmx.sql" />
+    <Content Include="Scripts\My\Admin\TransposeChords.js" />
+    <Content Include="Scripts\My\Site\Chords.js" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\Admin\Views\RussianSong\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignSong\Search.cshtml" />
+    <Content Include="gitarist.appcache" />
+    <None Include="Properties\PublishProfiles\xxx.pubxml" />
+    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\My\removeFooter.js" />
+    <Content Include="Scripts\My\Admin\SongCopyChordsByFormat.js" />
+    <Content Include="Scripts\My\Site\Startup.js" />
+    <Content Include="Scripts\My\Site\TransposeChords.js" />
+    <Content Include="Scripts\Plugins\jquery.transposer.css" />
+    <Content Include="Scripts\Plugins\jquery.transposer.js" />
+    <Content Include="Views\ForeignSongs\New.cshtml" />
+    <Content Include="Views\RussianSongs\Popular.cshtml" />
+    <Content Include="Views\ForeignSongs\Popular.cshtml" />
+    <Content Include="Views\RussianSongs\SongsByThemes.cshtml" />
+    <Content Include="Views\RussianSongs\ThemeSongs.cshtml" />
+    <Content Include="Views\ForeignSongs\SongsByThemes.cshtml" />
+    <Content Include="Views\ForeignSongs\ThemeSongs.cshtml" />
+    <Content Include="Views\RussianArtist\Popular.cshtml" />
+    <Content Include="Views\ForeignArtist\Popular.cshtml" />
+    <Content Include="Views\Song\Search.cshtml" />
+    <Content Include="Views\Start\Exam.cshtml" />
+    <Content Include="Views\Start\Ajax.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\My\Site\ReadMore.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\Plugins\bootstrap_min.js" />
+    <Content Include="Scripts\Plugins\jquery.cookie.js" />
+    <Content Include="Scripts\Plugins\readmore_min.js" />
+    <Content Include="Scripts\readmore.min.js" />
+    <Content Include="Views\Start\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\RussianArtist\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignArtist\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RussianArtist\Add.cshtml" />
+    <EntityDeploy Include="Models\DataBase\DbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DataBase\DbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+      <LastGenOutput>DbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DataBase\DbModel.edmx.diagram">
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DataBase\DbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+      <LastGenOutput>DbModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Views\RussianArtist\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignArtist\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignArtist\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Theme\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RussianSong\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\RussianSong\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\RussianSong\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignSong\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignSong\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ForeignSong\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Authorize\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\gitarist.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\My\Admin\Song.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_ChordsByLetterSelector.cshtml" />
+    <Content Include="Views\RussianArtist\ViewByLetter.cshtml" />
+    <Content Include="Views\ForeignArtist\ViewByLetter.cshtml" />
+    <Content Include="Views\RussianSongs\ByArtist.cshtml" />
+    <Content Include="Views\RussianSongs\ById.cshtml" />
+    <Content Include="Views\ForeignSongs\ByArtist.cshtml" />
+    <Content Include="Views\ForeignSongs\ById.cshtml" />
+    <Content Include="Views\RussianSongs\New.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gitarist.Bll\Gitarist.Bll.csproj">
+      <Project>{2706c48d-4f27-47b9-8236-51f32e8c1c22}</Project>
+      <Name>Gitarist.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gitarist.Dal\Gitarist.Dal.csproj">
+      <Project>{e01fa48c-1a4c-498f-af54-ceefb39a5dd9}</Project>
+      <Name>Gitarist.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gitarist.Domain\Gitarist.Domain.csproj">
+      <Project>{5f77a300-0ae7-4640-bdca-252bb581ede5}</Project>
+      <Name>Gitarist.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GitaristBllModels\GitaristBllModels\GitaristBllModels.csproj">
+      <Project>{209f64b3-b322-45b1-a500-8286bed01a4e}</Project>
+      <Name>GitaristBllModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GitaristInterfaces\GitaristInterfaces.csproj">
+      <Project>{78125a9e-1a64-46d6-a83a-a6add1990982}</Project>
+      <Name>GitaristInterfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>29348</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost/Gitarist</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,58 @@
+﻿@using Gitarist.Models.ViewModels
+@using Gitarist.Models.DataBase
+@using Gitarist.Areas.Admin.Models;
+
+@model SongsByTheme<SongRusian>
+
+@{
+    ViewBag.Title = "Русские песни по тематике";
+}
+
+<h2>Русские песни по тематике : @Model.Theme.name</h2>
+
+@if (@Model.Songs!=null && @Model.Songs.Count == 0)
+{
+    <p class="listEmprty">Нет песен по данной тематике</p>
+}
+else
+{
+    <table class="table table-striped">
+        <tr>
+            <th>
+               Русские песни по тематике : @Model.Theme.name
+            </th>
+        </tr>
+        @foreach (var song in Model.Songs)
+        {
+            <tr>
+                <td>
+                @if (song.ArtistRusian!=null)
+                { 
+                    if (string.IsNullOrEmpty(song.ArtistRusian.clearUrlName))
+                    {
+                        <a href="~/ForeignSongs/ArtistSongs/@song.ArtistRusian.id">@song.ArtistRusian.name</a> @:-
+                    }
+                    else
+                    {
+                        <a href="~/ForeignSongs/ArtistSongs/@song.ArtistRusian.clearUrlName">@song.ArtistRusian.name</a> @:-
+                    }
+
+                } 
+                @{
+                SongRusianClearUrlHelper ruSongHelper = new SongRusianClearUrlHelper(song);
+
+                    if (!ruSongHelper.HasArtist)
+                    {
+                        <a href="~/RussianSongs/ShowChords/@ruSongHelper.SongIdUrl">@song.name</a>
+                    }
+                    else
+                    {
+                        <a href="~/RussianSongs/ShowChords/@ruSongHelper.ArtistIdUrl/@ruSongHelper.SongIdUrl">@song.name</a>
+                    }
+
+                }
+            </tr>
+        }
+    </table>
+}
+

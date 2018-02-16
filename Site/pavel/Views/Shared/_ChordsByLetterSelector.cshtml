@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+
+    string ruLetters = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ";
+    string engLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+}
+
+<div class="chordsSelector">
+    
+    <ul class="ruChordsList">
+        @foreach (char ruLetter in ruLetters)
+        {
+            <li><a href="~/RussianArtist/ViewByLetter/@Convert.ToInt32(ruLetter).ToString()">@ruLetter</a></li>
+        }
+    </ul>    
+    <ul class="engChordsList">
+        @foreach (char engLetter in engLetters)
+        {
+            <li><a href="~/ForeignArtist/ViewByLetter/@Convert.ToInt32(engLetter).ToString()">@engLetter</a></li>
+        }
+    </ul>    
+
+</div>

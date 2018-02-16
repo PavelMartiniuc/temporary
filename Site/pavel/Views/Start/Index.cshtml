@@ -1,0 +1,220 @@
+﻿@using Gitarist.Models.DataBase
+@using Gitarist.Models.ViewModels
+@using Gitarist.Areas.Admin.Models;
+
+@model Gitarist.Models.ViewModels.StartPage
+@{
+    ViewBag.Title = "Лучшие аккорды";
+}
+
+
+
+<div class="startPage">
+    <div class="lastSongs">
+
+        <center><h5>Последние подборы</h5></center>
+
+        @if (Model.LastRuSongs.Count() != 0 || Model.LastEngSongs.Count() != 0)
+        {
+            <ul class="top20songs">
+                @foreach (var song in Model.LastRuSongs)
+                {
+                    <li>
+                        @if (song.ArtistRusian != null)
+                        {
+                            if (string.IsNullOrEmpty(song.ArtistRusian.clearUrlName))
+                            {
+                                <a href="~/RussianSongs/ArtistSongs/@song.ArtistRusian.id">@song.ArtistRusian.name</a> @:-
+                            }
+                            else
+                            {
+                                <a href="~/RussianSongs/ArtistSongs/@song.ArtistRusian.clearUrlName">@song.ArtistRusian.name</a> @:-
+                            }
+                        }
+                        
+                        @{
+                        SongRusianClearUrlHelper ruSongHelper = new SongRusianClearUrlHelper(song);
+
+                            if (!ruSongHelper.HasArtist)
+                            {
+                                <a href="~/RussianSongs/ShowChords/@ruSongHelper.SongIdUrl">@song.name</a>
+                            }
+                            else
+                            {
+                                <a href="~/RussianSongs/ShowChords/@ruSongHelper.ArtistIdUrl/@ruSongHelper.SongIdUrl">@song.name</a>
+                            }
+                   
+                        }
+                        
+                    </li>
+                }
+            </ul>
+
+            <ul class="top20songs">
+                @foreach (var song in Model.LastEngSongs)
+                {
+                    <li>
+                        @if (song.ArtistForeign != null)
+                        {
+                            if (string.IsNullOrEmpty(song.ArtistForeign.clearUrlName))
+                            {
+                                <a href="~/ForeignSongs/ArtistSongs/@song.ArtistForeign.id">@song.ArtistForeign.name</a> @:-
+                            }
+                            else
+                            {
+                                <a href="~/ForeignSongs/ArtistSongs/@song.ArtistForeign.clearUrlName">@song.ArtistForeign.name</a> @:-
+                            }
+                        }
+                        
+                        @{
+                        SongForeignClearUrlHelper enSongHelper = new SongForeignClearUrlHelper(song);
+
+                        if (!enSongHelper.HasArtist)
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@enSongHelper.SongIdUrl">@song.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@enSongHelper.ArtistIdUrl/@enSongHelper.SongIdUrl">@song.name</a>
+                        }
+
+}
+                     </li>
+                }
+            </ul>
+        }
+
+        else
+        {
+            <p>Список последних песен пуст</p>
+        }
+
+    </div>
+    <div class="popularSongs">
+
+        <center><h5>Попуряные песни</h5></center>
+
+        @if (Model.PopularRuSongs.Count() != 0 || Model.PopularEngSongs.Count() != 0)
+        {
+            <ul class="top20songs">
+                @foreach (var song in Model.PopularRuSongs)
+                {
+                    <li>
+                        @if (song.ArtistRusian != null)
+                        {
+
+                            if (string.IsNullOrEmpty(song.ArtistRusian.clearUrlName))
+                            {
+                                <a href="~/RussianSongs/ArtistSongs/@song.ArtistRusian.id">@song.ArtistRusian.name</a> @:-
+                            }
+                            else
+                            {
+                                <a href="~/RussianSongs/ArtistSongs/@song.ArtistRusian.clearUrlName">@song.ArtistRusian.name</a> @:-
+                            }
+                        }
+                        
+                        
+                        @{
+                        SongRusianClearUrlHelper ruSongHelper = new SongRusianClearUrlHelper(song);
+
+                        if (!ruSongHelper.HasArtist)
+                        {
+                            <a href="~/RussianSongs/ShowChords/@ruSongHelper.SongIdUrl">@song.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/RussianSongs/ShowChords/@ruSongHelper.ArtistIdUrl/@ruSongHelper.SongIdUrl">@song.name</a>
+                        }
+
+                        }
+                    </li>
+                }
+            </ul>
+            <ul class="top20songs">
+                @foreach (var song in Model.PopularEngSongs)
+                {
+                    <li>
+                        @if (song.ArtistForeign != null)
+                        {
+                            if (string.IsNullOrEmpty(song.ArtistForeign.clearUrlName))
+                            {
+                                <a href="~/ForeignSongs/ArtistSongs/@song.ArtistForeign.id">@song.ArtistForeign.name</a> @:-
+                            }
+                            else
+                            {
+                                <a href="~/ForeignSongs/ArtistSongs/@song.ArtistForeign.clearUrlName">@song.ArtistForeign.name</a> @:-
+                            }
+                        }
+                        
+                        @{
+                        SongForeignClearUrlHelper enSongHelper = new SongForeignClearUrlHelper(song);
+
+                        if (!enSongHelper.HasArtist)
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@enSongHelper.SongIdUrl">@song.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@enSongHelper.ArtistIdUrl/@enSongHelper.SongIdUrl">@song.name</a>
+                        }
+
+}
+                    </li>
+                }
+            </ul>
+        }
+
+        else
+        {
+            <p>Список популярных песен пуст</p>
+        }
+    </div>
+    <div class="popularArtists">
+        <center><h5>Популярные исполнители</h5></center>
+
+        @if (Model.PopularRuArtists.Count() != 0 || Model.PopularEngArtists.Count() != 0)
+        {
+            <ul class="top20songs">
+                @foreach (var artist in Model.PopularRuArtists)
+                {
+                    <li>
+                        @if (string.IsNullOrEmpty(artist.clearUrlName))
+                        {
+                        <a href="~/RussianSongs/ArtistSongs/@artist.id">@artist.name</a>
+                        }
+                        else
+                        {
+                        <a href="~/RussianSongs/ArtistSongs/@artist.clearUrlName">@artist.name</a> 
+                        }
+
+                    </li>
+                }
+            </ul>
+            <ul class="top20songs">
+                @foreach (var artist in Model.PopularEngArtists)
+                {
+                    <li>
+                        @if (string.IsNullOrEmpty(artist.clearUrlName))
+                        {
+                            <a href="~/ForeignSongs/ArtistSongs/@artist.id">@artist.name</a> 
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ArtistSongs/@artist.clearUrlName">@artist.name</a> 
+                        }
+
+                    </li>
+                }
+            </ul>
+        }
+
+        else
+        {
+            <p>Список популярных исполнителей пуст</p>
+        }
+    </div>
+</div>
+<div style="clear:both" ></div>
+
+
+

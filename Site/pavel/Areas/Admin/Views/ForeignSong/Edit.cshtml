@@ -1,0 +1,52 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model SongForeignViewModel
+
+@{
+    ViewBag.Title = "Правка зарубежной песни";
+}
+
+@Scripts.Render("~/bundles/admin/SongChordsFormat")
+
+<form action="~/admin/ForeignSong/Edit" method="post" name="frmEditForeignSong" id="frmEditForeignSong">
+    <fieldset form="frmEditForeignSong">
+        <legend>Правка зарубежной песни</legend>
+        @Html.HiddenFor(m=>Model.id)
+       
+        <a id="redirectToChordsView" href="~/ForeignSongs/ById/@Model.id">Просмотр песни</a>
+        <br />
+        <br />
+        Русский исполнитель <br> @Html.DropDownListFor(m => Model.artistId, new SelectList(SongForeignViewModel.Artists, "id", "name", Model.artistId))
+        <br />
+        Тема песни <br> @Html.DropDownListFor(m => Model.themeId, new SelectList(SongForeignViewModel.Themes, "id", "name", Model.themeId))
+        <br/>
+        Название зарубежной песни <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name)
+        <br>
+        Чпу <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName">
+        @Html.ValidationMessageFor(model => model.clearUrlName)
+        <br>
+        Новинка <br /> @Html.CheckBoxFor(m => Model.isNew)
+        <br>
+        Популярная песня <br /> @Html.CheckBoxFor(m => Model.isPopular)<br />
+        Аккорды <br /><br />
+        <input type="button" id="btCopySelection" value="Копировать фрагмент" />
+        <input type="button" id="btPasteChords" value="Вставить аккоры" />
+        <input type="button" id="btCancelFormat" value="Отменить преобразование"  />
+        <br /><br />
+        <div id="chords">
+            <div id="originalTextChords">
+                <textarea rows="25" cols="50" id="Chords" name="Chords">@Model.chords</textarea><br>
+                @Html.ValidationMessageFor(model => model.chords)
+            </div>
+            <div id="textChords">
+
+                <textarea rows="15" cols="50" id="copiedChords" disabled="disabled"></textarea>
+                <p>Скопированые аккорды</p>
+            </div>
+        </div>
+        <div class="saveDiv">
+            <br />
+            <p><input name="SaveAndClose" type="submit" value="Сохранить и закрыть"> <input name="Save" type="submit" value="Сохранить"></p>
+        </div>
+    </fieldset>
+</form>

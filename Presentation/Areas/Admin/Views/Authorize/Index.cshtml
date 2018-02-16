@@ -1,0 +1,27 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model UserAccount
+@{
+    ViewBag.Title = "Авторизация";
+}
+
+<h2>Авторизация</h2>
+
+<form method="post" id="frmAuthorize" action="~/admin/Authorize" >
+    <fieldset form="frmAuthorize">
+        <legend>Авторизация</legend>
+        <br />
+        Логин <br> <input type="text" name="Login" id="Login" value="@Model.Login">
+        @Html.ValidationMessageFor(model => model.Login)
+        <br>
+        Пароль<br /> <input type="password" name="Password" id="Password" value="@Model.Password">
+        @Html.ValidationMessageFor(model => model.Password)
+        <br />
+        Запомнить меня<br /> @Html.CheckBoxFor(m => Model.RememeberMe)
+        <p><input type="submit" value="Войти"></p>
+
+        @if(!string.IsNullOrEmpty( Model.ErrorMessage))
+        {
+         <p class="authFailureText">Неверный логин или пароль </p>
+        }
+    </fieldset>
+</form>

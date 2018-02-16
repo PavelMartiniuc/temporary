@@ -1,0 +1,57 @@
+﻿@using Gitarist.Models.DataBase;
+@using Gitarist.Helpers;
+
+@model SongRusian
+@{
+    ViewBag.Title = "Просмотр песни " + Model.name;
+}
+
+<link rel="stylesheet" type="text/css" href="~/Scripts/Plugins/jquery.transposer.css" />
+
+<h2>Просмотр аккордов песни :
+    
+    @if (Model.ArtistRusian != null)
+    {
+         @Model.ArtistRusian.name @:/ 
+    }  @Model.name
+    
+</h2> 
+<br />
+@if (Request.IsAuthenticated)
+{
+    <a id="editSong" href="~/admin/RussianSong/Edit/@Model.id">Редактировать песню</a>
+}
+
+@{
+    int rowsCount = Model.chords.Split('\n').Length;
+    string rowCountClassName = "";
+    if (rowsCount >= 0 && rowsCount <= 35)
+    { 
+        rowCountClassName = "OneColumn";
+    }
+    else if (rowsCount > 35 && rowsCount <= 70)
+    { 
+        rowCountClassName = "TwoColumn";
+    }
+    else if (rowsCount > 70 && rowsCount <= 105)
+    {
+       rowCountClassName = "ThreeColumn";
+    }
+    else
+    {
+        rowCountClassName = "FourColumn";
+    }
+            
+}
+<script type="text/javascript" src="~/Scripts/Plugins/jquery.transposer.js"></script>
+<script type="text/javascript" src="~/Scripts/My/Site/Chords.js"></script>
+
+
+<article class="chordsArticle @rowCountClassName">
+    <div id="chordPreview"><img></div>  
+    <pre class="viewSongChords"  @Html.GetKeyChordKeySongName(Model.name) >
+        @Model.chords
+    </pre>
+</article>
+
+

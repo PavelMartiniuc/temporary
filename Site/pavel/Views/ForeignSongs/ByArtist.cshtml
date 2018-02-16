@@ -1,0 +1,52 @@
+﻿@using Gitarist.Models.ViewModels;
+@using Gitarist.Areas.Admin.Models;
+
+@model SongForeignByArtist
+
+@{
+    ViewBag.Title = "Песни исполнителя" +  @Model.Artist.name;
+}
+@Scripts.Render("~/plugins/jquery-readmore")
+@Scripts.Render("~/bundles/site/ReadMore")
+
+<h2>@Model.Artist.name</h2>
+
+@if (!string.IsNullOrEmpty(Model.Artist.biography))
+{
+    <p class="listEmprty">Биография</p>
+    <pre class="readMore">@Model.Artist.biography</pre>
+}
+
+<br><br>
+@if (Model.ArtistSongs.Count != 0)
+{
+    <table>
+        <tr>
+            <th>Песни исполнителя: @Model.Artist.name</th>
+        </tr>
+
+        @foreach (var song in Model.ArtistSongs)
+        {
+            <tr>
+                <td>
+                    @{
+                        SongForeignClearUrlHelper enSongHelper = new SongForeignClearUrlHelper(song);
+
+                        if (!enSongHelper.HasArtist)
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@enSongHelper.SongIdUrl">@song.name</a>
+                        }
+                        else
+                        {
+                            <a href="~/ForeignSongs/ShowChords/@enSongHelper.ArtistIdUrl/@enSongHelper.SongIdUrl">@song.name</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p class="listEmprty">У этого исполнителя песен нет</p>
+}

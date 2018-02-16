@@ -1,0 +1,58 @@
+﻿@using Gitarist.Models.DataBase;
+@using Gitarist.Areas.Admin.Models;
+@model List<SongRusian>
+
+@{
+    ViewBag.Title = "Русские новинки";
+}
+
+<h2>Русские новинки</h2>
+@if(Model.Count()==0)
+{     
+    <p class="listEmprty">Нет русских новинок</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Русские новинки</th>
+        </tr>
+    @foreach (var song in Model)
+    {
+        <tr>
+            <td>
+            @if (song.ArtistRusian != null)
+            {
+
+                if (string.IsNullOrEmpty(song.ArtistRusian.clearUrlName))
+                {
+                    <a href="~/RussianSongs/ArtistSongs/@song.ArtistRusian.id">@song.ArtistRusian.name</a> @:- 
+                }
+                else
+                {
+                    <a href="~/RussianSongs/ArtistSongs/@song.ArtistRusian.clearUrlName">@song.ArtistRusian.name</a> @:- 
+                }
+
+
+            }                       
+            @{
+            SongRusianClearUrlHelper ruSongHelper = new SongRusianClearUrlHelper(song);
+
+            if (!ruSongHelper.HasArtist)
+            {
+                <a href="~/RussianSongs/ShowChords/@ruSongHelper.SongIdUrl">@song.name</a>
+            }
+            else
+            {
+                <a href="~/RussianSongs/ShowChords/@ruSongHelper.ArtistIdUrl/@ruSongHelper.SongIdUrl">@song.name</a>
+            }
+
+            }
+            </td>
+        </tr>
+    }
+    </table>
+}
+
+
+

@@ -1,0 +1,29 @@
+﻿@using System.Web.Mvc
+@model HandleErrorInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Error.</h1>
+        <h2>An error occurred while processing your request.</h2>
+        <p>Error details: @Model.Exception.Message</p>
+        @if (Model.Exception.InnerException!=null)
+        {
+            <p>Inner exception: @Model.Exception.InnerException</p>
+        }
+        @if (!string.IsNullOrEmpty(Model.Exception.StackTrace))
+        {
+            <p>Stack Trace: @Model.Exception.StackTrace</p>
+        }
+    </hgroup>
+</body>
+</html>

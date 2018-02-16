@@ -1,0 +1,64 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model SongForeignFilteredViewModel
+
+@{
+    ViewBag.Title = "Зарубежные песни";
+}
+@Scripts.Render("~/bundles/admin/song")
+
+<h2>Зарубежные песни</h2>
+
+<form id="fmSearch" action="~/Admin/ForeignSong/Search/">
+    Поиск песен <input id="Criteria" name="Criteria" type="text" value="@ViewBag.SearchCriteria" /><input value="Искать" type="submit" />
+</form>
+<br />
+<a href="~/admin/ForeignSong/Add">Добавить песню</a>
+<br />
+<br />
+<form action="~/admin/ForeignSong/Index/" method="get" id="filterForm">
+    <table width="70%" border="1px" class="table table-striped">
+        <tr>
+            <th width="30px">
+                Id
+            </th>
+            <th>
+                Название
+            </th>
+            <th>
+                Исполнитель @Html.DropDownListFor(m => Model.ArtistId, new SelectList(Model.Artists, "id", "name", Model.ArtistId))
+            </th>
+            <th>
+                Тема @Html.DropDownListFor(m => Model.ThemeId, new SelectList(Model.Themes, "id", "name", Model.ThemeId))
+            </th>
+            <th>
+                Чпу
+            </th>
+
+            <th width="150px"></th>
+        </tr>
+        @foreach (var song in Model.Songs)
+        {
+            <tr>
+                <td>
+                    @song.id
+                </td>
+                <td align="left">
+                    @song.name
+                </td>
+                <td align="left">
+                    @song.ArtistName
+                </td>
+                <td align="left">
+                    @song.ThemeName
+                </td>
+                <td align="left">
+                    @song.clearUrlName
+                </td>
+                <td>
+                    <a href="~/admin/ForeignSong/Edit/@song.id">Править</a>
+                    <a onclick="return  confirm('Удалить зарубежную песню?')" href="~/admin/ForeignSong/Delete/@song.id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </table>
+</form>

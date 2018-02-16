@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{2D2B2EB8-6D1B-49DA-8B2E-739136883139}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B24A014A-3C65-4A03-85CD-8C5B2D23BD8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gitarist.Domain", "Gitarist.Domain", "{F3B7254F-BC21-4E1D-97C5-086A22C079CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitarist.Domain", "Gitarist.Domain\Gitarist.Domain.csproj", "{5F77A300-0AE7-4640-BDCA-252BB581EDE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitarist.DomainMapping", "Gitarist.DomainMapping\Gitarist.DomainMapping.csproj", "{A6643E9C-EC8C-4B90-B3C9-B043AD5AABA9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F77A300-0AE7-4640-BDCA-252BB581EDE5} = {5F77A300-0AE7-4640-BDCA-252BB581EDE5}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dal", "Dal", "{EB1AFE27-1FFC-4A91-B0A6-B91FAECA9E12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitarist.Dal", "Gitarist.Dal\Gitarist.Dal.csproj", "{E01FA48C-1A4C-498F-AF54-CEEFB39A5DD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bll", "Bll", "{28833597-DA23-4945-8B1F-D6F70207DEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gitarist.Bll", "Gitarist.Bll\Gitarist.Bll.csproj", "{2706C48D-4F27-47B9-8236-51F32E8C1C22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{0E348822-B168-4AFB-AB43-860F621FE220}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitaristInterfaces", "GitaristInterfaces\GitaristInterfaces.csproj", "{78125A9E-1A64-46D6-A83A-A6ADD1990982}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitaristBllModels", "GitaristBllModels\GitaristBllModels\GitaristBllModels.csproj", "{209F64B3-B322-45B1-A500-8286BED01A4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D2B2EB8-6D1B-49DA-8B2E-739136883139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D2B2EB8-6D1B-49DA-8B2E-739136883139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D2B2EB8-6D1B-49DA-8B2E-739136883139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D2B2EB8-6D1B-49DA-8B2E-739136883139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F77A300-0AE7-4640-BDCA-252BB581EDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F77A300-0AE7-4640-BDCA-252BB581EDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F77A300-0AE7-4640-BDCA-252BB581EDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F77A300-0AE7-4640-BDCA-252BB581EDE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6643E9C-EC8C-4B90-B3C9-B043AD5AABA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6643E9C-EC8C-4B90-B3C9-B043AD5AABA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6643E9C-EC8C-4B90-B3C9-B043AD5AABA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6643E9C-EC8C-4B90-B3C9-B043AD5AABA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E01FA48C-1A4C-498F-AF54-CEEFB39A5DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E01FA48C-1A4C-498F-AF54-CEEFB39A5DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E01FA48C-1A4C-498F-AF54-CEEFB39A5DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E01FA48C-1A4C-498F-AF54-CEEFB39A5DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2706C48D-4F27-47B9-8236-51F32E8C1C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2706C48D-4F27-47B9-8236-51F32E8C1C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2706C48D-4F27-47B9-8236-51F32E8C1C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2706C48D-4F27-47B9-8236-51F32E8C1C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78125A9E-1A64-46D6-A83A-A6ADD1990982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78125A9E-1A64-46D6-A83A-A6ADD1990982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78125A9E-1A64-46D6-A83A-A6ADD1990982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78125A9E-1A64-46D6-A83A-A6ADD1990982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{209F64B3-B322-45B1-A500-8286BED01A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209F64B3-B322-45B1-A500-8286BED01A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209F64B3-B322-45B1-A500-8286BED01A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209F64B3-B322-45B1-A500-8286BED01A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3B7254F-BC21-4E1D-97C5-086A22C079CC} = {B24A014A-3C65-4A03-85CD-8C5B2D23BD8E}
+		{5F77A300-0AE7-4640-BDCA-252BB581EDE5} = {F3B7254F-BC21-4E1D-97C5-086A22C079CC}
+		{A6643E9C-EC8C-4B90-B3C9-B043AD5AABA9} = {F3B7254F-BC21-4E1D-97C5-086A22C079CC}
+		{E01FA48C-1A4C-498F-AF54-CEEFB39A5DD9} = {EB1AFE27-1FFC-4A91-B0A6-B91FAECA9E12}
+		{2706C48D-4F27-47B9-8236-51F32E8C1C22} = {28833597-DA23-4945-8B1F-D6F70207DEA5}
+		{78125A9E-1A64-46D6-A83A-A6ADD1990982} = {0E348822-B168-4AFB-AB43-860F621FE220}
+		{209F64B3-B322-45B1-A500-8286BED01A4E} = {28833597-DA23-4945-8B1F-D6F70207DEA5}
+	EndGlobalSection
+EndGlobal

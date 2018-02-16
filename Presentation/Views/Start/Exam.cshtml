@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Exam";
+}
+
+<h2>Exam</h2>
+Hello from Exam
+<input type="button" value="Ajax" id="btSendAjax" />
+<br>
+Ajax Result:
+<div id="ajaxResult" style="border:1px solid; width:100%; height: 400px;" >
+</div>
+
+<script>
+    alert(typeof undefined);
+    
+    var btSendAjax = document.getElementById("btSendAjax");
+    var ajaxResultDiv = document.getElementById("ajaxResult");
+    btSendAjax.onclick = sendAjax;
+    
+    function setAjaxResult(resultString) {
+        ajaxResultDiv.innerHTML = '';
+        ajaxResultDiv.innerHTML = resultString;
+    }
+    
+    function appenAjaxResultLine(lineString) {
+        setAjaxResult(ajaxResultDiv.innerHTML + lineString + '<br>');
+    }
+    
+
+    function sendAjax() {
+        var xhr = new XMLHttpRequest();
+        var data = JSON.stringify({
+            name: 'Павел',
+            surname: 'Мартынюк'
+        });
+        //var body = 'name=' + encodeURIComponent("Павел") +
+        //  '&surname=' + encodeURIComponent("Мартынюк");
+
+        //xhr.open("GET", '/Start/Ajax?' + params, true);
+        /*
+
+
+        var boundary = String(Math.random()).slice(2);
+        var boundaryMiddle = '--' + boundary + '\r\n';
+        var boundaryLast = '--' + boundary + '--\r\n';
+
+        var body = ['\r\n'];
+        for (var key in data) {
+            // добавление поля
+            body.push('Content-Disposition: form-data; name="' + key + '"\r\n\r\n' + data[key] + '\r\n');
+        }
+        
+        body = body.join(boundaryMiddle) + boundaryLast;
+        */
+        //var formData = new FormData();
+        //formData.append("name", "Павел");
+        //formData.append("surname", "Мартынюк");
+
+        xhr.open("POST", '/Start/Ajax', true);
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        
+        btSendAjax.value = 'Загружаю...'; // (2)
+        btSendAjax.disabled = true;
+        xhr.timeout = 1000;
+        xhr.ontimeout = function () {
+            btSendAjax.value = 'Ajax';
+            btSendAjax.disabled = false;
+            alert('Извините, запрос превысил максимальное время');
+        };
+        xhr.onreadystatechange = function() { // (3)
+            btSendAjax.value = 'Ajax';
+            btSendAjax.disabled = false;
+            
+            if (xhr.readyState != 4) return;
+            
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                setAjaxResult(xhr.responseText);
+            }
+            
+        };
+
+       
+
+        xhr.send(data);
+    }
+</script>

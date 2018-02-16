@@ -1,0 +1,26 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model ArtistRusianViewModel
+
+@{
+    ViewBag.Title = "Добавление русского исполнителя";
+}
+
+<form action="~/admin/RussianArtist/Add" method="post" name="frmAddRussianArtist" id="frmAddRussianArtist">
+    <fieldset form="frmAddRussianArtist">
+        <legend>Добавление русского исполнителя</legend>
+    
+        <span>Имя исполнителя</span> <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name)
+        <br>
+        <span>Чпу</span> <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName">
+        @Html.ValidationMessageFor(model => model.clearUrlName)
+        <br>
+        <span>Популяреый исполнитель</span> <br /> @Html.CheckBoxFor(m => Model.isPopular)
+        @Html.ValidationMessageFor(model => model.isPopular)
+        <br>
+        <span>Биография исполнителя</span> <br> <textarea rows="15" cols="50" name="Biography">@Model.biography</textarea><br>
+        <br />
+        <br />
+        <p><input type="submit" value="Добавить"></p>
+    </fieldset>
+</form>

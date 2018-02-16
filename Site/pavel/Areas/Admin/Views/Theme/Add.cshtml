@@ -1,0 +1,22 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model ThemeViewModel
+
+@{
+    ViewBag.Title = "Добавление тематики песни";
+}
+
+
+
+<form action="~/admin/Theme/Add" method="post" name="frmAddTheme" id="frmAddTheme">
+    <fieldset form="frmTheme">
+        <legend>Добавление тематики песни</legend>
+   
+        Имя темы <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name) <br>
+        Чпу <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName"><br>
+        @Html.ValidationMessageFor(model => model.clearUrlName) <br>
+        <br />
+        <br />
+        <p><input type="submit" value="Добавить"></p>
+    </fieldset>
+</form>

@@ -1,0 +1,58 @@
+﻿@using Gitarist.Areas.Admin.Models
+@model SongForeignViewModel
+
+@{
+    ViewBag.Title = "Добавление зарубежной песни";
+}
+
+@Scripts.Render("~/bundles/admin/SongChordsFormat")
+<link rel="stylesheet" type="text/css" href="/Scripts/Plugins/jquery.transposer.css">
+
+<form action="~/admin/ForeignSong/Add" method="post" name="frmAddForeignSong" id="frmAddForeignSong">
+    <fieldset form="frmAddForeignSong">
+        <legend>Добавление зарубежной песни</legend>
+        <span>Зарубежный исполнитель</span> <br> @Html.DropDownListFor(m => Model.artistId, new SelectList(Model.Artists, "id", "name"))
+        <br />
+        <span>Тема песни</span> <br> @Html.DropDownListFor(m => Model.themeId, new SelectList(Model.Themes, "id", "name"))
+        <br/>
+        <span>Название зарубежной песни</span> <br> <input type="text" name="Name" value="@Model.name">
+        @Html.ValidationMessageFor(model => model.name)
+        <br>
+        <span>Чпу</span> <br> <input type="text" name="clearUrlName" value="@Model.clearUrlName">
+        @Html.ValidationMessageFor(model => model.clearUrlName)
+        <br>
+        <span>Новинка</span> <br /> @Html.CheckBoxFor(m => Model.isNew)
+        <br>
+        <span>Популярная песня</span> <br /> @Html.CheckBoxFor(m => Model.isPopular)<br />
+        <span>Аккорды</span> <br /><br />
+        <input type="button" id="btCopySelection" value="Копировать фрагмент" />
+        <input type="button" id="btPasteChords" value="Вставить аккоры" />
+        <input type="button" id="btCancelFormat" value="Отменить преобразование" />
+        <input type="button" id="btParseChords" value="Распознать аккорды" />
+        <span>Тональность</span>
+        @Html.DropDownList("chordsKey", Model.ChordKeys)
+        <br /><br />
+        <div id="chords">
+            <div id="originalTextChords">
+                <textarea rows="25" cols="50" id="Chords" name="Chords">@Model.chords</textarea><br>
+                @Html.ValidationMessageFor(model => model.chords)
+            </div>
+            <div id="textChords">
+
+                <textarea rows="15" cols="50" id="copiedChords" disabled="disabled"></textarea>
+                <p><span>Скопированые аккорды</span></p>
+            </div>
+            <div id="parsedContainer">
+                <pre id="parsedChords" class="viewSongChords" data-key="">
+                </pre>
+            </div>
+            <div class="saveDiv">
+                <br />
+                <p><input type="submit" value="Сохранить"></p>
+            </div>
+       </div>
+    </fieldset>
+</form>
+
+<script type="text/javascript" src="~/Scripts/Plugins/jquery.transposer.js"></script>
+<script type="text/javascript" src="~/Scripts/My/Admin/TransposeChords.js"></script>

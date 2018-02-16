@@ -1,0 +1,200 @@
+﻿@using Gitarist.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Styles.Render("~/Content/css")-->
+    @Scripts.Render("~/bundles/jquery")
+    <!-- Scripts.Render("~/plugins/bootstrup")-->
+    @Scripts.Render("~/plugins/jquery-cookie")
+    @Scripts.Render("~/bundles/removeFooter")
+    <!-- Scripts.Render("~/bundles/modernizr") -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/coolMenu.css" />
+    <script src="~/Scripts/My/Site/Startup.js" ></script>
+</head>
+<body>
+    <img src="~/Content/images/site/guitar1.png" id="imgGuitar1" style="display:none" />
+    <img src="~/Content/images/site/guitar2.png" id="imgGuitar2" style="display:none" />
+    @{
+        var routeData = ViewContext.Controller.ControllerContext.RouteData;
+        string curentAction = routeData.Values["controller"].ToString() + "/" + routeData.Values["action"].ToString();
+    }
+    
+    <script>
+       
+        $(function () {
+            var storage = window.sessionStorage;
+            var $txtName = $('#txtName');
+            if (storage) {
+
+                     function storageHandler(e) {
+                         var divContent = '';
+                         divContent += 'type: ' + e.type + '\n';
+                         divContent += 'action: ' + e.action + '\n';
+                        divContent += 'key: ' + e.key + '\n';
+                        divContent += 'oldValue: ' + e.oldValue + '\n';
+                        divContent += 'newValue: ' + e.newValue + '\n';
+                        divContent += 'url: ' + e.url + '\n';
+                        divContent += 'storageArea: ' + e.storageArea + '\n';
+                        $('#storageEvents').text(divContent);
+                    };
+                window.addEventListener('storageq', storageHandler);
+
+                function setLocalItem(key, value) {
+                    var oldVal = getLocalItem(key);
+                    storage.setItem(key, value);
+                    raiseLocalStorageEvent(key, oldVal, value, 'set');
+                }
+                
+                function getLocalItem(key) {
+                    var value = storage.getItem(key);
+                    raiseLocalStorageEvent(key, value, value, 'get');
+                    return value;
+                }
+                
+                function removeLocalItem(key) {
+                    var oldVal = getLocalItem(key);
+                    var value = storage.removeItem(key);
+                    raiseLocalStorageEvent(key, oldVal, value, 'remove');
+                }
+                
+                function raiseLocalStorageEvent(key, oldValue, newValue, action) {
+                    var e = document.createEvent( 'StorageEvent' );
+                    e.initStorageEvent( 'storageq', false, false, key,
+                        oldValue, newValue, location.href, localStorage);
+                    e.action = action;
+                    window.dispatchEvent( e );
+                }
+
+                    $("#btGetStorageValue").on("click", function () {
+                        $txtName.val(getLocalItem('txtName'));
+                    });
+                    $("#btSetStorageValue").on("click", function () {
+                        setLocalItem('txtName', $txtName.val());
+                    });
+                    $("#btRemoveStorageValue").on("click", function () {
+                        removeLocalItem('txtName');
+                        showStorageValue();
+                    });
+                
+                    function showStorageValue() {
+                        var txtName = getLocalItem('txtName');
+                        if (txtName) {
+                            $txtName.val(txtName);
+                            return;
+                        }
+
+                        $txtName.val('');
+                    }
+
+                    showStorageValue();
+                
+                    
+
+                }
+        });
+    </script>
+
+    <div id="storageContainer" style="display: none" >
+        <input id="txtName" type="text" />
+        <input id="btGetStorageValue" type="button" value="Get value" />
+        <input id="btSetStorageValue" type="button" value="Set value" />
+        <input id="btRemoveStorageValue" type="button" value="Remove value" />
+        <div>
+            <textarea id="storageEvents" style="display: block;height: 150px; width: 500px; background-color: wheat"></textarea>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="menu-bg">
+            <div class="wrap">
+                <div class="menu">
+                    <ul id="coolMenu">
+                        <li @Html.GetActiveClass(curentAction, "Start/Index")><a href="~/">Главная</a></li>
+                        <li @Html.GetActiveClass(curentAction, "Songs/New")>
+                            <a href="#">
+                                Новые песни
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianSongs/New">Русские</a> </li>
+                                <li> <a href="~/ForeignSongs/New">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+
+                        <li @Html.GetActiveClass(curentAction, "Songs/Popular")>
+                            <a href="#">
+                                Популярные песни
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianSongs/Popular">Русские</a> </li>
+                                <li> <a href="~/ForeignSongs/Popular">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+                        <li @Html.GetActiveClass(curentAction, "Artist/Popular")>
+                            <a href="#">
+                                Популярные исполнители
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianArtist/Popular">Русские</a> </li>
+                                <li> <a href="~/ForeignArtist/Popular">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+                        <li @Html.GetActiveClass(curentAction, "Songs/SongsCountByThemes")>
+                            <a href="#">
+                                Песни по тематике
+                            </a>
+                            <ul>
+                                <li> <a href="~/RussianSongs/SongsByThemes">Русские</a> </li>
+                                <li> <a href="~/ForeignSongs/SongsByThemes">Зарубежные</a> </li>
+                            </ul>
+                        </li>
+                        <li><a href="~/admin">Авторизация</a></li>
+                     </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="header-bg">
+            <div class="wrap">
+                <div class="header">
+                    <div class="logo">
+                        <a href="~/">   <img src="~/Content/images/site/logoGuitar1.png" alt="" title="logo"><span class="gitarist">Возьми правильный аккорд</span></a>
+                    </div>
+                    <div class="foot-search">
+                        <form id="fmSearch" action="~/Song/Search/">
+                            <input id="Criteria" name="Criteria" type="text" value="@ViewBag.SearchCriteria" placeholder="Поиск по названию, исполнителю и тексту" />
+                            <input type="submit" value="Поиск">
+                        </form>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="content-bg">
+            <div class="wrap">
+                <div class="main">
+                    <div class="content">
+                        @Html.Partial("_ChordsByLetterSelector")
+
+                        @RenderBody()
+
+                        @RenderSection("scripts", required: false)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bg">
+            <div class="wrap">
+                <div class="copy">
+                    <p>© 2016 All rights Reserved | Design by Pavel Martin</a></p>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>

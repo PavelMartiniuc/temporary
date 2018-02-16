@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/plugins/bootstrup")
+    @Scripts.Render("~/plugins/jquery-cookie")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+
+</head>
+<body>
+    <header>
+        <h1>Gitarist.ru  Администрирование</h1>
+    </header>
+    
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="~/">На сайт</a></li>
+        <li role="presentation"><a href="~/admin">На главную</a></li>
+        <li role="presentation"><a href="~/admin/Theme">Темы песен</a></li>
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                Исполнители <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li> <a href="~/admin/RussianArtist">Русские</a> </li>
+                <li> <a href="~/admin/ForeignArtist">Зарубежные</a> </li>
+            </ul>
+        </li>
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                Песни <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li> <a href="~/admin/RussianSong">Русские</a> </li>
+                <li> <a href="~/admin/ForeignSong">Зарубежные</a> </li>
+            </ul>
+        </li>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li>
+                
+                <a href="~/Admin/Authorize/Logout">@User.Identity.Name - Выйти</a>
+            </li>
+        } 
+    </ul>
+
+   
+    @RenderBody()
+
+
+    @RenderSection("scripts", required: false)
+    <footer>
+        Учебная разработка 
+    </footer>
+ 
+</body>
+</html>

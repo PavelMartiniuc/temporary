@@ -1,0 +1,71 @@
+﻿@using Gitarist.Areas.Admin.Models.Song;
+
+@model SearchResult
+
+@{
+    ViewBag.Title = "Поиск песен";
+}
+
+<h2>Результаты поиска по критерию: @Model.Criteria </h2>
+
+<div class="SearchResultContainer">
+    @{
+        int ruCount = Model.ruSongs.Count();
+        int engCount =  Model.engSongs.Count();
+        string tableWidthClass = (ruCount > 0 && engCount > 0) ? "w50": "w100";
+        
+    }
+    @if (ruCount> 0)
+    {
+        <table class="@tableWidthClass">
+            <tr>
+                <th>
+                    Русские песни
+                </th>
+            </tr>
+            @foreach (var song in Model.ruSongs)
+            {
+                <tr>
+                    <td>
+                        @if (song.ArtistRusian != null)
+                        {
+                            <a href="~/RussianSongs/ByArtist/@song.ArtistRusian.id">@song.ArtistRusian.name</a> @:-
+                        }
+                        <a href="~/RussianSongs/ById/@song.id">@song.name</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    
+    }
+
+    @if (engCount > 0)
+    {
+        <table class="@tableWidthClass">
+            <tr>
+                <th>
+                    Зарубежные песни
+                </th>
+            </tr>
+            @foreach (var song in Model.engSongs)
+            {
+                <tr>
+                    <td>
+                        @if (song.ArtistForeign != null)
+                        {
+                            <a href="~/ForeignSongs/ByArtist/@song.ArtistForeign.id">@song.ArtistForeign.name</a> @:-
+                }
+                        <a href="~/ForeignSongs/ById/@song.id">@song.name</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    }
+
+    @if(ruCount ==0 && engCount ==0)
+    { 
+        <p>Песен не найдено</p>
+    }
+
+</div>
